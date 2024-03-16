@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Zertte</string>
+    <string name="zertte">ZERTTE</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="login">LOGIN</string>
+    <string name="alga_qadam_bas">- ALGA QADAM BAS -</string>
+    <string name="amp"><![CDATA[&]]></string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="email_id">Email Id</string>
+    <string name="password">Password</string>
+    <string name="phone_number">Phone number</string>
+    <string name="_5_0">(5.0)</string>
+    <string name="add_to_favorites_description" />
+    <string name="place_image_description" />
+</resources>

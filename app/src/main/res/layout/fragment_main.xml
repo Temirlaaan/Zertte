@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/introduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp">
+
+    <TextView
+        android:id="@+id/salem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/darkGray"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:text="Sälem,"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/salem"
+        android:textColor="@color/darkGray"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:text="Temirlan"/>
+
+    <TextView
+        android:id="@+id/kaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/salem"
+        android:textColor="@color/darkGray"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="Bügın qaida baramyz?"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:src="@drawable/profile_picture"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/jihankezColor"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

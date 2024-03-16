@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bc_shoqan">
+
+    <TextView
+        android:id="@+id/Zertte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/zertte"
+        android:textStyle="bold|normal"
+        android:paddingTop="90dp"
+        android:textSize="64sp"
+        android:textAlignment="center"
+        android:textColor="@color/jihankezColor"/>
+
+    <TextView
+        android:id="@+id/and"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/amp"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
+        android:textAlignment="center"
+        android:layout_below="@id/Zertte"
+        android:textColor="#305058" />
+
+    <TextView
+        android:id="@+id/ff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alga_qadam_bas"
+        android:textSize="30sp"
+        android:textStyle="bold|normal"
+        android:textAlignment="center"
+        android:layout_below="@id/and"
+        android:textColor="#305058" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:text="@string/login"
+        android:background="@drawable/rounded_corner"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/signInButton"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_corner"
+        android:text="@string/sign_in"
+        android:layout_below="@id/loginButton"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
