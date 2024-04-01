@@ -2,9 +2,9 @@ package com.example.zertte
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.zertte.details.TabFragmentPikirler
-import com.example.zertte.details.TabFragmentSuretter
-import com.example.zertte.details.TabFragmentTolygyrak
+import com.example.zertte.details.tabs.TabFragmentPikirler
+import com.example.zertte.details.tabs.TabFragmentSuretter
+import com.example.zertte.details.tabs.TabFragmentTolygyrak
 
 class ViewPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
 

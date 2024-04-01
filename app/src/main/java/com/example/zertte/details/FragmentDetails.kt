@@ -1,10 +1,11 @@
-package com.example.zertte
+package com.example.zertte.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.zertte.ViewPagerAdapter
 import com.example.zertte.databinding.FragmentDetailsBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

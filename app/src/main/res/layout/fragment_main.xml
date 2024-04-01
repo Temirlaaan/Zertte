@@ -2,13 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="16dp">
 
     <RelativeLayout
         android:id="@+id/introduction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp">
+        android:layout_marginTop="30dp">
 
     <TextView
         android:id="@+id/salem"
@@ -36,7 +38,7 @@
         android:layout_below="@+id/salem"
         android:textColor="@color/darkGray"
         android:textStyle="bold"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:text="Bügın qaida baramyz?"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -47,8 +49,266 @@
             app:civ_border_color="@color/jihankezColor"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="2dp"/>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/introduction"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="Kategorialar"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/darkGray"/>
+
+    <HorizontalScrollView
+        android:id="@+id/categories2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@+id/categories">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            
+            <androidx.cardview.widget.CardView
+                android:id="@+id/firstCard"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#FD4747"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_mosque"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical|bottom"
+                    android:textColor="@color/white"
+                    android:text="Tarihi" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/secondCard"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#39ED4B"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_korkem"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical|bottom"
+                    android:textColor="@color/white"
+                    android:text="Korkem" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/thirdCard"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#FFBF1B"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_belsendi"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical|bottom"
+                    android:textColor="@color/white"
+                    android:text="Belsendi" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fourthCard"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#D253FF"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_animal"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical|bottom"
+                    android:textColor="@color/white"
+                    android:text="Qoryqtar" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fifthCard"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#47D9ED"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/ic_mountain"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical|bottom"
+                    android:textColor="@color/white"
+                    android:text="Taular" />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcomeKZ"
+        android:layout_width="190dp"
+        android:layout_height="280dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/categories2">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/greetings"
+            android:adjustViewBounds="true"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical|bottom"
+            android:textColor="@color/darkGray"
+            android:background="@color/white"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:text="Qazaqstanğa qoş keldıñız!" />
+
+    </androidx.cardview.widget.CardView>
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/langGuide"
+        android:layout_width="180dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/welcomeKZ"
+        android:layout_alignParentEnd="true"
+        app:cardCornerRadius="10dp"
+        android:layout_below="@+id/categories2">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/steppe"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_gravity="bottom"
+            android:textStyle="bold"
+            android:text="Tıldık nūsqaulyq"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/welcomeKZ"
+        android:layout_marginLeft="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/langGuide">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tips"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_gravity="bottom"
+            android:textStyle="bold"
+            android:text="Keñester"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/enTanymal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcomeKZ"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="Eñ tanymal oryndar"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/darkGray"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popularRv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/enTanymal"
+        tools:listitem="@layout/item_popular_main"/>
 
 </RelativeLayout>

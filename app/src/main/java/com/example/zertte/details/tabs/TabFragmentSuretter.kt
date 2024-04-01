@@ -1,4 +1,4 @@
-package com.example.zertte.details
+package com.example.zertte.details.tabs
 
 import android.os.Bundle
 import android.view.LayoutInflater
