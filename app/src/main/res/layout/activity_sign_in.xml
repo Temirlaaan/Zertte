@@ -42,82 +42,75 @@
         android:id="@+id/enterName"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:text="Atyñyzdy engızıñız"
+        android:hint="Atyñyzdy engızıñız"
+        android:textColorHint="@color/gray"
         android:background="@drawable/stroke"
         android:layout_below="@+id/ff"
         android:layout_marginTop="20dp"
-        android:textColor="@color/gray"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
-        android:textStyle="normal"
-        android:autofillHints="emailAddress"
         android:paddingStart="16dp"
-        android:inputType="textEmailAddress"
-        tools:ignore="LabelFor,RtlSymmetry" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/enterSurname"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:text="Familiañyzdy engızıñız"
+        android:hint="Familiañyzdy engızıñız"
+        android:textColorHint="@color/gray"
         android:background="@drawable/stroke"
         android:layout_below="@+id/enterName"
         android:layout_marginTop="10dp"
-        android:textColor="@color/gray"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
-        android:textStyle="normal"
-        android:autofillHints="emailAddress"
         android:paddingStart="16dp"
-        android:inputType="textEmailAddress"
-        tools:ignore="LabelFor,RtlSymmetry" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:text="Poşta"
+        android:hint="Poşta"
+        android:textColorHint="@color/gray"
         android:background="@drawable/stroke"
         android:layout_below="@+id/enterSurname"
         android:layout_marginTop="10dp"
-
-        android:textColor="@color/gray"
+        android:textColor="@color/black"
         android:layout_centerHorizontal="true"
-        android:textStyle="normal"
-        android:autofillHints="emailAddress"
         android:paddingStart="16dp"
-        android:inputType="textEmailAddress"
-        tools:ignore="LabelFor,RtlSymmetry" />
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/password"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:text="Qūpia söz"
+        android:hint="Qūpia söz"
+        android:textColorHint="@color/gray"
         android:background="@drawable/stroke"
         android:layout_centerVertical="true"
-        android:textColor="@color/gray"
+        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:textStyle="normal"
         android:layout_below="@+id/emailEditText"
         android:paddingStart="16dp"
-        android:autofillHints=""
-        tools:ignore="RtlSymmetry"
-        android:inputType="phone" />
+        android:autofillHints="password"
+        android:inputType="textPassword"/>
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/confirmPassword"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:text="Qūpia sözdı qaita ter"
+        android:hint="Qūpia sözdı qaita ter"
+        android:textColorHint="@color/gray"
         android:background="@drawable/stroke"
         android:layout_centerVertical="true"
-        android:textColor="@color/gray"
+        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:textStyle="normal"
-        android:layout_below="@+id/phoneNumber"
+        android:layout_below="@+id/password"
         android:paddingStart="16dp"
-        tools:ignore="LabelFor,RtlSymmetry,TextFields" />
+        android:autofillHints="password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/signInButton"
@@ -128,7 +121,7 @@
         android:layout_centerVertical="true"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/passwordEditText"
+        android:layout_below="@+id/confirmPassword"
         android:layout_marginTop="30dp"/>
 
     <View
@@ -142,6 +135,7 @@
         android:layout_marginTop="20dp" />
 
     <TextView
+        android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line"
@@ -149,6 +143,5 @@
         android:fontFamily="sans-serif-light"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
-
 
 </RelativeLayout>

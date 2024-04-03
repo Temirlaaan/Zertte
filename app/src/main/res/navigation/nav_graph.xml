@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress NavigationFile -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    tools:ignore="InvalidNavigation"
+    app:startDestination="@id/fragmentAuthMain">
+
+    <fragment
+        android:id="@+id/fragmentAuthMain"
+        android:name="com.example.zertte.auth.SplashActivity"
+        android:label="fragment_login"
+        tools:layout="@layout/activity_splash">
+    <action
+        android:id="@+id/action_fragmentAuthMain_to_loginFragment"
+        app:destination="@id/loginFragment" />
+    <action
+        android:id="@+id/action_fragmentAuthMain_to_signInFragment"
+        app:destination="@id/signInFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.zertte.auth.ActivityLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/activity_login" />
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.zertte.auth.ActivitySignIn"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/activity_sign_in" />
+
+</navigation>

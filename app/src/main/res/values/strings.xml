@@ -12,4 +12,16 @@
     <string name="_5_0">(5.0)</string>
     <string name="add_to_favorites_description" />
     <string name="place_image_description" />
+
+    <string name="err_msg_enter_name">Atyñyzdy engızıñız</string>
+    <string name="err_msg_enter_last_name">Familiañyzdy engızıñız</string>
+    <string name="err_msg_enter_email">Poştañyzdy engızıñız</string>
+    <string name="err_msg_enter_password">Qūpia sözdı engızıñız</string>
+    <string name="err_msg_enter_confirm_password">Qūpia sözdı qaitalañyz</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">Qūpia sözder bırdei emes</string>
+    <string name="err_msg_valid_name">Sızdıñ atyñyz dūrys engızılmegen</string>
+    <string name="err_msg_valid_last_name">Sızdıñ familiañyz dūrys engızılmegen</string>
+    <string name="err_msg_valid_email">Sızdıñ poştañyz dūrys engızılmegen</string>
+    <string name="err_msg_valid_password">Qūpia sözdıñ pışımı dūrys emes</string>
+
 </resources>
