@@ -23,5 +23,6 @@
     <string name="err_msg_valid_last_name">Sızdıñ familiañyz dūrys engızılmegen</string>
     <string name="err_msg_valid_email">Sızdıñ poştañyz dūrys engızılmegen</string>
     <string name="err_msg_valid_password">Qūpia sözdıñ pışımı dūrys emes</string>
+    <string name="image">image</string>
 
 </resources>

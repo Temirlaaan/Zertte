@@ -14,6 +14,8 @@ import com.example.zertte.Firestore.User
 import com.example.zertte.MainActivity
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivityLoginBinding
+import com.example.zertte.profile.UserProfileActivity
+import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 class ActivityLogin : BaseActivity(), View.OnClickListener {
@@ -47,7 +49,13 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
         Log.i("Last Name: ", user.lastName)
         Log.i("Email: ", user.email)
 
-        startActivity(Intent(this@ActivityLogin, MainActivity::class.java))
+        if(user.profileCompleted == 0){
+            val intent = Intent(this@ActivityLogin, UserProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            startActivity(intent)
+        }else{
+            startActivity(Intent(this@ActivityLogin, MainActivity::class.java))
+        }
         finish()
     }
 
