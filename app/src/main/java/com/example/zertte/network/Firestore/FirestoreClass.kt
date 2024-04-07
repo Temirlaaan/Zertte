@@ -3,17 +3,22 @@ package com.example.zertte.Firestore
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.util.Log
 import com.example.zertte.auth.ActivityLogin
 import com.example.zertte.auth.ActivitySignIn
+import com.example.zertte.profile.UserProfileActivity
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class FirestoreClass {
 
     private val mFirestore = FirebaseFirestore.getInstance()
+
 
     fun registerUser(activity: ActivitySignIn, userInfo: User){
 
@@ -84,6 +89,76 @@ class FirestoreClass {
                         activity.hideProgressDialog()
                     }
                 }
+            }
+    }
+
+    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>){
+
+        mFirestore.collection(Constants.USERS).document(getCurrentUserID())
+
+            mFirestore.collection(Constants.USERS)
+                .document(getCurrentUserID())
+                .update(userHashMap)
+                .addOnSuccessListener {
+                    when (activity) {
+                        is UserProfileActivity -> {
+                            activity.userProfileUpdateSuccess()
+                        }
+                    }
+                }
+                .addOnFailureListener { e ->
+                    when (activity) {
+                        is UserProfileActivity -> {
+                            activity.hideProgressDialog()
+                        }
+                    }
+                    Log.e(
+                        activity.javaClass.simpleName,
+                        "Error while updating the user details",
+                        e
+                    )
+                }
+    }
+
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?){
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
+            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+                + Constants.getFileExtension(
+                activity,
+                imageFileURI
+            )
+        )
+
+        sRef.putFile(imageFileURI!!).addOnSuccessListener{taskSnapshot ->
+
+            Log.e(
+                "Firebase Image URL",
+                taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
+            )
+
+            taskSnapshot.metadata!!.reference!!.downloadUrl
+                .addOnSuccessListener { uri ->
+                    Log.e("Downloadable Image URL", uri.toString())
+
+                    when(activity){
+                        is UserProfileActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
+                    }
+                }
+        }
+            .addOnFailureListener{exception ->
+
+                when(activity){
+                    is UserProfileActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    activity.javaClass.simpleName,
+                    exception.message,
+                    exception
+                )
             }
     }
 }
