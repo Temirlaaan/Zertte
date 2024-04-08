@@ -1,15 +1,14 @@
 package com.example.zertte
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.example.zertte.auth.BaseActivity
 import com.example.zertte.databinding.ActivityMainBinding
-import com.example.zertte.utils.Constants
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -22,7 +21,10 @@ class MainActivity : AppCompatActivity() {
 
             navController = Navigation.findNavController(this, R.id.activity_main_nav_host_fragment)
             setupWithNavController(binding.bottomNavigationView, navController)
+    }
 
-
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed(){
+        doubleBackToExit()
     }
 }

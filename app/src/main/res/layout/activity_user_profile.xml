@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile.UserProfileActivity">
+    tools:context=".ui.profile.UserProfileActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/rounded_bottom_corners2"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +40,8 @@
                 android:text="Profile"
                 android:layout_margin="10dp"
                 android:textSize="36sp"
-                android:textColor="#335058"
+                android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_centerHorizontal="true"/>
 
             <androidx.cardview.widget.CardView

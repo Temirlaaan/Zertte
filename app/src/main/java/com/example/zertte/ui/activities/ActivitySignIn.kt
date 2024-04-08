@@ -6,10 +6,10 @@ import android.text.TextUtils
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import com.example.zertte.Firestore.FirestoreClass
-import com.example.zertte.Firestore.User
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivitySignInBinding
+import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.model.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth

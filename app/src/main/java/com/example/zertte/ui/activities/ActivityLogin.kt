@@ -5,16 +5,15 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.zertte.Firestore.FirestoreClass
-import com.example.zertte.Firestore.User
+import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.model.User
 import com.example.zertte.MainActivity
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivityLoginBinding
-import com.example.zertte.profile.UserProfileActivity
+import com.example.zertte.ui.profile.UserProfileActivity
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
@@ -44,10 +43,6 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User){
 
         hideProgressDialog()
-
-        Log.i("First Name: ", user.firstName)
-        Log.i("Last Name: ", user.lastName)
-        Log.i("Email: ", user.email)
 
         if(user.profileCompleted == 0){
             val intent = Intent(this@ActivityLogin, UserProfileActivity::class.java)

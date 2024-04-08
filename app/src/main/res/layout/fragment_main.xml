@@ -43,6 +43,7 @@
         android:text="Bügın qaida baramyz?"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePhoto"
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:src="@drawable/profile_picture"

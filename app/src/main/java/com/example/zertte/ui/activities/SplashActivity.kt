@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.zertte.MainActivity
 import com.example.zertte.R
 
 class SplashActivity : AppCompatActivity() {
@@ -25,10 +26,10 @@ class SplashActivity : AppCompatActivity() {
         @Suppress("DEPRECATION")
         android.os.Handler().postDelayed(
             {
-                startActivity(Intent(this@SplashActivity, ActivityLogin::class.java))
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 finish()
             },
-            2500
+            1500
         )
     }
 }

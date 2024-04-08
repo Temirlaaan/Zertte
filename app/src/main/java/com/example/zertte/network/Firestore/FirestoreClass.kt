@@ -1,13 +1,14 @@
-package com.example.zertte.Firestore
+package com.example.zertte.network.Firestore
 
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import com.example.zertte.SettingsActivity
 import com.example.zertte.auth.ActivityLogin
 import com.example.zertte.auth.ActivitySignIn
-import com.example.zertte.profile.UserProfileActivity
+import com.example.zertte.ui.profile.UserProfileActivity
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -73,19 +74,22 @@ class FirestoreClass {
                     "${user.firstName} ${user.lastName}"
                 )
                 editor.apply()
-
-                //TODO Pass the result to the Login Activity.
                 //START
                 when(activity){
                     is ActivityLogin -> {
                         activity.userLoggedInSuccess(user)
                     }
+                    is SettingsActivity -> {
+                        activity.userDetailsSuccess(user)
+                    }
                 }
-                //END
             }
             .addOnFailureListener{e->
                 when(activity){
                     is ActivityLogin ->{
+                        activity.hideProgressDialog()
+                    }
+                    is SettingsActivity ->{
                         activity.hideProgressDialog()
                     }
                 }

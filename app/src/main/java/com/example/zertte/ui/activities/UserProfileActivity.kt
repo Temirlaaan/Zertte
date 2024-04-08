@@ -1,8 +1,7 @@
-package com.example.zertte.profile
+package com.example.zertte.ui.profile
 
 import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -10,20 +9,22 @@ import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.zertte.MainActivity
+import com.example.zertte.R
 import com.example.zertte.auth.BaseActivity
 import com.example.zertte.databinding.ActivityUserProfileBinding
 import com.example.zertte.network.Firestore.FirestoreClass
-import com.example.zertte.network.Firestore.User
+import com.example.zertte.model.User
 import com.example.zertte.utils.Constants
 import com.example.zertte.utils.Constants.READ_STORAGE_PERMISSION_CODE
 import com.example.zertte.utils.GlideLoader
 import java.io.IOException
 
-class UserProfileActivity : BaseActivity() {
+class UserProfileActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityUserProfileBinding
     private lateinit var mUserDetails: User
     private var mSelectedImageFileUri: Uri? = null
@@ -38,18 +39,40 @@ class UserProfileActivity : BaseActivity() {
             mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        binding.etFirstName.isEnabled = false
         binding.etFirstName.setText(mUserDetails.firstName)
-
-        binding.etLastName.isEnabled = false
         binding.etLastName.setText(mUserDetails.lastName)
-
         binding.etEmail.isEnabled = false
         binding.etEmail.setText(mUserDetails.email)
 
-        binding.back.setOnClickListener{
-            onBackPressed()
+        if(mUserDetails.profileCompleted == 0){
+            binding.tvProfile.text = "Complete Profile"
+
+            binding.etFirstName.isEnabled = false
+
+            binding.etLastName.isEnabled = false
+
+            binding.back.visibility = View.GONE
+        }else{
+            binding.tvProfile.text = "Edit Profile"
+            GlideLoader(this@UserProfileActivity).loadUserPicture(mUserDetails.image, binding.imgProfile)
+
+            binding.etEmail.isEnabled = false
+            binding.etEmail.setText(mUserDetails.email)
+
+            if(mUserDetails.mobile != 0L){
+             binding.etMobileNumber.setText(mUserDetails.mobile.toString())
+            }
+
+            if(mUserDetails.gender == Constants.MALE){
+                binding.rbMale.isChecked = true
+            }else{
+                binding.rbFemale.isChecked = true
+            }
+
+            binding.back.visibility = View.VISIBLE
         }
+
+        binding.back.setOnClickListener(this)
 
         binding.imgProfile.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -77,6 +100,16 @@ class UserProfileActivity : BaseActivity() {
     private fun updateUserProfileDetails(){
         val userHashMap = HashMap<String, Any>()
 
+        val firstName = binding.etFirstName.text.toString().trim{ it <= ' ' }
+        if(firstName != mUserDetails.firstName){
+            userHashMap[Constants.FIRST_NAME] = firstName
+        }
+
+        val lastName = binding.etLastName.text.toString().trim{ it <= ' ' }
+        if(firstName != mUserDetails.lastName){
+            userHashMap[Constants.LAST_NAME] = lastName
+        }
+
         val mobileNumber = binding.etMobileNumber.text.toString().trim{ it <= ' ' }
 
         val gender = if (binding.rbMale.isChecked){
@@ -89,8 +122,12 @@ class UserProfileActivity : BaseActivity() {
             userHashMap[Constants.IMAGE] = mUserProfileImageURL
         }
 
-        if(mobileNumber.isNotEmpty()){
+        if(mobileNumber.isNotEmpty() && mobileNumber != mUserDetails.mobile.toString()){
             userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        }
+
+        if(gender.isNotEmpty() && gender != mUserDetails.gender){
+            userHashMap[Constants.GENDER] = gender
         }
 
         userHashMap[Constants.GENDER] = gender
@@ -199,11 +236,17 @@ class UserProfileActivity : BaseActivity() {
 
         mUserProfileImageURL = imageURL
 
-        val sharedPreferences = getSharedPreferences(Constants.ZERTTE_PREFERENCES, Context.MODE_PRIVATE)
-        sharedPreferences.edit().putString(Constants.USER_PROFILE_IMAGE, imageURL).apply()
-
-
         updateUserProfileDetails()
+    }
+
+    override fun onClick(v: View?) {
+        if(v != null) {
+            when(v.id){
+                R.id.back ->{
+                    onBackPressed()
+                }
+            }
+        }
     }
 }
 

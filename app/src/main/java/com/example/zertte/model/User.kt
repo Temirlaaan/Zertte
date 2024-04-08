@@ -1,11 +1,11 @@
-package com.example.zertte.Firestore
+package com.example.zertte.network.Firestore
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-class User (
+class   User (
     val id: String = "",
     val firstName: String = "",
     val lastName: String = "",

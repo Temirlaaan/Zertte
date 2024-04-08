@@ -1,15 +1,17 @@
 package com.example.zertte.auth
 
 import android.app.Dialog
+import android.os.Handler
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.zertte.R
 import com.google.android.material.snackbar.Snackbar
 
 open class BaseActivity : AppCompatActivity() {
-
-
+    
+    private var doubleBackToExitPressedOne = false
 
     private lateinit var mProgressDialog: Dialog
 
@@ -52,5 +54,24 @@ open class BaseActivity : AppCompatActivity() {
 
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
+    }
+
+    fun doubleBackToExit(){
+
+        if(doubleBackToExitPressedOne){
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOne = true
+
+        Toast.makeText(
+            this,
+            "Click back again to exit",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        @Suppress("DEPRECATION")
+        Handler().postDelayed({doubleBackToExitPressedOne = false}, 2000)
     }
 }

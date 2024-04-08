@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Zertte">
         <activity
-            android:name=".profile.UserProfileActivity"
+            android:name=".ui.profile.UserProfileActivity"
             android:exported="false" />
         <activity
             android:name=".auth.ForgotPasswordActivity"
@@ -44,5 +44,6 @@
         <activity android:name=".auth.ActivityLogin" />
         <activity android:name=".auth.ActivitySignIn" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".SettingsActivity"/>
     </application>
 </manifest>
