@@ -1,4 +1,4 @@
-package com.example.zertte.ui.favourites
+package com.example.zertte.ui.Fragments
 
 import androidx.fragment.app.Fragment
 import com.example.zertte.R

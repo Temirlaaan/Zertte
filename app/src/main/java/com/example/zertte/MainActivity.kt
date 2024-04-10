@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.example.zertte.auth.BaseActivity
+import com.example.zertte.ui.activities.BaseActivity
 import com.example.zertte.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {

@@ -1,4 +1,4 @@
-package com.example.zertte.network.Firestore
+package com.example.zertte.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,4 +1,4 @@
-package com.example.zertte.ui.mainMenu
+package com.example.zertte.ui.Fragments
 
 import android.content.Context
 import android.content.Intent
@@ -6,11 +6,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.zertte.R
-import com.example.zertte.SettingsActivity
 import com.example.zertte.databinding.FragmentMainBinding
 import com.example.zertte.model.User
+import com.example.zertte.ui.activities.SettingsActivity
 import com.example.zertte.utils.Constants
-import com.example.zertte.utils.GlideLoader
 
 
 class FragmentMain: Fragment(R.layout.fragment_main) {
@@ -38,11 +37,6 @@ class FragmentMain: Fragment(R.layout.fragment_main) {
         }
     }
 
-    fun userDetailsSuccess(user: User){
-        mUserDetails = user
-
-        GlideLoader(requireContext()).loadUserPicture(user.image, binding.profilePhoto)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,4 +1,4 @@
-package com.example.zertte.auth
+package com.example.zertte.ui.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,12 +8,11 @@ import android.text.TextUtils
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.zertte.network.Firestore.FirestoreClass
-import com.example.zertte.model.User
 import com.example.zertte.MainActivity
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivityLoginBinding
-import com.example.zertte.ui.profile.UserProfileActivity
+import com.example.zertte.model.User
+import com.example.zertte.network.Firestore.FirestoreClass
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 

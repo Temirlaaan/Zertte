@@ -19,19 +19,19 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Zertte">
         <activity
-            android:name=".ui.profile.UserProfileActivity"
+            android:name=".ui.activities.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.ForgotPasswordActivity"
+            android:name=".ui.activities.ForgotPasswordActivity"
             android:exported="false"
             android:screenOrientation="fullSensor"
             android:theme="@style/Base.Theme.Zertte"
             tools:ignore="DiscouragedApi" />
         <activity
-            android:name=".auth.BaseActivity"
+            android:name=".ui.activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.SplashActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.Zertte">
@@ -41,9 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".auth.ActivityLogin" />
-        <activity android:name=".auth.ActivitySignIn" />
+        <activity android:name=".ui.activities.ActivityLogin" />
+        <activity android:name=".ui.activities.ActivitySignIn" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".ui.activities.SettingsActivity"/>
     </application>
 </manifest>

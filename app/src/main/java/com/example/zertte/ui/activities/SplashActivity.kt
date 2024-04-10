@@ -1,4 +1,4 @@
-package com.example.zertte.auth
+package com.example.zertte.ui.activities
 
 import android.content.Intent
 import android.os.Build

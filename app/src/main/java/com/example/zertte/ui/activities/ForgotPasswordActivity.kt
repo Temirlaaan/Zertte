@@ -1,4 +1,4 @@
-package com.example.zertte.auth
+package com.example.zertte.ui.activities
 
 import android.os.Bundle
 import android.widget.Toast

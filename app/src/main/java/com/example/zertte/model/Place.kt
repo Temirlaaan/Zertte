@@ -1,18 +1,16 @@
 package com.example.zertte.model
 
-class PlaceData {
-    var placeName: String? = null
-    var placeInfo: String? = null
-    var placeImg: String? = null
-    constructor(){}
-
-    constructor(
-        placeName:String?,
-        placeInfo:String?,
-        placeImg:String?
-    ){
-        this.placeName = placeName
-        this.placeInfo = placeInfo
-        this.placeImg = placeImg
-    }
-}
+/*
+@Parcelize
+data class Place(
+        val user_id: String = "",
+        val user_name: String = "",
+        val title: String = "",
+        val price: String = "",
+        val description: String = "",
+        val location: String = "",
+        val image: String = "",
+        val rating: String = "",
+        val id: String = "",
+): Parcelable
+*/

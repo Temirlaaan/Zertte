@@ -1,4 +1,4 @@
-package com.example.zertte.ui.profile
+package com.example.zertte.ui.activities
 
 import android.Manifest
 import android.app.Activity
@@ -15,7 +15,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.zertte.MainActivity
 import com.example.zertte.R
-import com.example.zertte.auth.BaseActivity
 import com.example.zertte.databinding.ActivityUserProfileBinding
 import com.example.zertte.network.Firestore.FirestoreClass
 import com.example.zertte.model.User

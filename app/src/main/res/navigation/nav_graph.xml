@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/fragmentAuthMain"
-        android:name="com.example.zertte.auth.SplashActivity"
+        android:name="com.example.zertte.ui.activities.SplashActivity"
         android:label="fragment_login"
         tools:layout="@layout/activity_splash">
     <action
@@ -22,13 +22,13 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.zertte.auth.ActivityLogin"
+        android:name="com.example.zertte.ui.activities.ActivityLogin"
         android:label="fragment_login"
         tools:layout="@layout/activity_login" />
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.zertte.auth.ActivitySignIn"
+        android:name="com.example.zertte.ui.activities.ActivitySignIn"
         android:label="fragment_sign_in"
         tools:layout="@layout/activity_sign_in" />
 

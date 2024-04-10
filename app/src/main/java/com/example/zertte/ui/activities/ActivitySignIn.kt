@@ -1,4 +1,4 @@
-package com.example.zertte.auth
+package com.example.zertte.ui.activities
 
 import android.os.Build
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivitySignInBinding
-import com.example.zertte.network.Firestore.FirestoreClass
 import com.example.zertte.model.User
+import com.example.zertte.network.Firestore.FirestoreClass
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
