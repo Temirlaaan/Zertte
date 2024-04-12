@@ -1,26 +1,25 @@
-package com.example.zertte.ui.activities.user
+package com.example.zertte.ui.activities.guide
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.example.zertte.R
-import com.example.zertte.databinding.ActivitySettingsBinding
-import com.example.zertte.model.User
-import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.databinding.ActivitySettingsGuidesBinding
+import com.example.zertte.model.Guide
 import com.example.zertte.ui.activities.BaseActivity
 import com.example.zertte.utils.Constants
 import com.example.zertte.utils.GlideLoader
 import com.google.firebase.auth.FirebaseAuth
 
-class SettingsActivity: BaseActivity(), View.OnClickListener {
+class SettingsActivityGuide: BaseActivity(), View.OnClickListener {
 
-    private lateinit var mUserDetails: User
+    private lateinit var mGuideDetails: Guide
 
-    private lateinit var binding: ActivitySettingsBinding
+    private lateinit var binding: ActivitySettingsGuidesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        binding = ActivitySettingsGuidesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.edit.setOnClickListener(this)
@@ -30,25 +29,25 @@ class SettingsActivity: BaseActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        getUserDetails()
+        getGuideDetails()
     }
 
 
-    private fun getUserDetails(){
+    private fun getGuideDetails(){
         showProgressDialog("Please, wait...")
-        FirestoreClass().getUserDetails(this@SettingsActivity)
+        FirestoreClassGuides().getGuideDetails(this@SettingsActivityGuide)
     }
 
-    fun userDetailsSuccess(user: User){
-        mUserDetails = user
+    fun guideDetailsSuccess(guide: Guide){
+        mGuideDetails = guide
 
         hideProgressDialog()
 
-        GlideLoader(this@SettingsActivity).loadUserPicture(user.image, binding.imgViewProfile)
-        binding.nameSurname.text = "${user.firstName} ${user.lastName}"
-        binding.gender.text = user.gender
-        binding.email.text = user.email
-        binding.phone.text = user.mobile.toString()
+        GlideLoader(this@SettingsActivityGuide).loadUserPicture(guide.image, binding.imgViewProfile)
+        binding.nameSurname.text = "${guide.firstName} ${guide.lastName}"
+        binding.gender.text = guide.gender
+        binding.email.text = guide.email
+        binding.phone.text = guide.mobile.toString()
     }
 
 
@@ -56,14 +55,14 @@ class SettingsActivity: BaseActivity(), View.OnClickListener {
         if(v != null) {
             when(v.id){
                 R.id.edit -> {
-                    val intent = Intent(this@SettingsActivity, UserProfileActivity::class.java)
-                    intent.putExtra(Constants.EXTRA_USER_DETAILS, mUserDetails)
+                    val intent = Intent(this@SettingsActivityGuide, GuideProfileActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_GUIDE_DETAILS, mGuideDetails)
                     startActivity(intent)
-                 }
+                }
 
                 R.id.logOut ->{
                     FirebaseAuth.getInstance().signOut()
-                    val intent = Intent(this@SettingsActivity, ActivityLogin::class.java)
+                    val intent = Intent(this@SettingsActivityGuide, ActivityLoginGuide::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()

@@ -1,4 +1,4 @@
-package com.example.zertte.ui.activities.user
+package com.example.zertte.ui.activities.guide
 
 import android.Manifest
 import android.app.Activity
@@ -13,38 +13,38 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.zertte.MainActivity
+import com.example.zertte.MainActivityGuide
 import com.example.zertte.R
-import com.example.zertte.databinding.ActivityUserProfileBinding
-import com.example.zertte.network.Firestore.FirestoreClass
-import com.example.zertte.model.User
+import com.example.zertte.databinding.ActivityGuideProfileBinding
+import com.example.zertte.model.Guide
 import com.example.zertte.ui.activities.BaseActivity
 import com.example.zertte.utils.Constants
 import com.example.zertte.utils.Constants.READ_STORAGE_PERMISSION_CODE
 import com.example.zertte.utils.GlideLoader
 import java.io.IOException
 
-class UserProfileActivity : BaseActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityUserProfileBinding
-    private lateinit var mUserDetails: User
+
+class GuideProfileActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityGuideProfileBinding
+    private lateinit var mGuideDetails: Guide
     private var mSelectedImageFileUri: Uri? = null
-    private var mUserProfileImageURL: String = ""
+    private var mGuideProfileImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUserProfileBinding.inflate(layoutInflater)
+        binding = ActivityGuideProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
-            mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
+        if(intent.hasExtra(Constants.EXTRA_GUIDE_DETAILS)){
+            mGuideDetails = intent.getParcelableExtra(Constants.EXTRA_GUIDE_DETAILS)!!
         }
 
-        binding.etFirstName.setText(mUserDetails.firstName)
-        binding.etLastName.setText(mUserDetails.lastName)
+        binding.etFirstName.setText(mGuideDetails.firstName)
+        binding.etLastName.setText(mGuideDetails.lastName)
         binding.etEmail.isEnabled = false
-        binding.etEmail.setText(mUserDetails.email)
+        binding.etEmail.setText(mGuideDetails.email)
 
-        if(mUserDetails.profileCompleted == 0){
+        if(mGuideDetails.profileCompleted == 0){
             binding.tvProfile.text = "Complete Profile"
 
             binding.etFirstName.isEnabled = false
@@ -54,16 +54,16 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             binding.back.visibility = View.GONE
         }else{
             binding.tvProfile.text = "Edit Profile"
-            GlideLoader(this@UserProfileActivity).loadUserPicture(mUserDetails.image, binding.imgProfile)
+            GlideLoader(this@GuideProfileActivity).loadUserPicture(mGuideDetails.image, binding.imgProfile)
 
             binding.etEmail.isEnabled = false
-            binding.etEmail.setText(mUserDetails.email)
+            binding.etEmail.setText(mGuideDetails.email)
 
-            if(mUserDetails.mobile != 0L){
-             binding.etMobileNumber.setText(mUserDetails.mobile.toString())
+            if(mGuideDetails.mobile != 0L){
+                binding.etMobileNumber.setText(mGuideDetails.mobile.toString())
             }
 
-            if(mUserDetails.gender == Constants.MALE){
+            if(mGuideDetails.gender == Constants.MALE){
                 binding.rbMale.isChecked = true
             }else{
                 binding.rbFemale.isChecked = true
@@ -85,29 +85,29 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
 
         binding.btnSave.setOnClickListener {
-            if(validateUserProfileDetails()){
+            if(validateGuideProfileDetails()){
                 showProgressDialog("Please, wait...")
 
                 if(mSelectedImageFileUri != null)
-                FirestoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri)
+                    FirestoreClassGuides().uploadImageToCloudStorage(this, mSelectedImageFileUri, Constants.GUIDE_PROFILE_IMAGE)
                 else{
-                    updateUserProfileDetails()
+                    updateGuideProfileDetails()
                 }
             }
         }
     }
 
-    private fun updateUserProfileDetails(){
-        val userHashMap = HashMap<String, Any>()
+    private fun updateGuideProfileDetails(){
+        val guideHashMap = HashMap<String, Any>()
 
         val firstName = binding.etFirstName.text.toString().trim{ it <= ' ' }
-        if(firstName != mUserDetails.firstName){
-            userHashMap[Constants.FIRST_NAME] = firstName
+        if(firstName != mGuideDetails.firstName){
+            guideHashMap[Constants.FIRST_NAME] = firstName
         }
 
         val lastName = binding.etLastName.text.toString().trim{ it <= ' ' }
-        if(firstName != mUserDetails.lastName){
-            userHashMap[Constants.LAST_NAME] = lastName
+        if(firstName != mGuideDetails.lastName){
+            guideHashMap[Constants.LAST_NAME] = lastName
         }
 
         val mobileNumber = binding.etMobileNumber.text.toString().trim{ it <= ' ' }
@@ -118,35 +118,35 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             Constants.FEMALE
         }
 
-        if(mUserProfileImageURL.isNotEmpty()){
-            userHashMap[Constants.IMAGE] = mUserProfileImageURL
+        if(mGuideProfileImageURL.isNotEmpty()){
+            guideHashMap[Constants.IMAGE] = mGuideProfileImageURL
         }
 
-        if(mobileNumber.isNotEmpty() && mobileNumber != mUserDetails.mobile.toString()){
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
+        if(mobileNumber.isNotEmpty() && mobileNumber != mGuideDetails.mobile.toString()){
+            guideHashMap[Constants.MOBILE] = mobileNumber.toLong()
         }
 
-        if(gender.isNotEmpty() && gender != mUserDetails.gender){
-            userHashMap[Constants.GENDER] = gender
+        if(gender.isNotEmpty() && gender != mGuideDetails.gender){
+            guideHashMap[Constants.GENDER] = gender
         }
 
-        userHashMap[Constants.GENDER] = gender
+        guideHashMap[Constants.GENDER] = gender
 
-        userHashMap[Constants.COMPLETE_PROFILE] = 1
+        guideHashMap[Constants.COMPLETE_PROFILE] = 1
 
-        FirestoreClass().updateUserProfileData(this, userHashMap)
+        FirestoreClassGuides().updateGuideProfileData(this, guideHashMap)
     }
 
-    fun userProfileUpdateSuccess(){
+    fun guideProfileUpdateSuccess(){
         hideProgressDialog()
 
         Toast.makeText(
-            this@UserProfileActivity,
+            this@GuideProfileActivity,
             "User profile updated successfully",
             Toast.LENGTH_LONG
         ).show()
 
-        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        startActivity(Intent(this@GuideProfileActivity, MainActivityGuide::class.java))
         finish()
     }
 
@@ -188,7 +188,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == READ_STORAGE_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-              //  showErrorSnackBar("Granted", false)
+                //  showErrorSnackBar("Granted", false)
                 Constants.showImageChooser(this)
             } else {
                 // Permission denied, show a message to the user
@@ -209,7 +209,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                     }catch(e: IOException){
                         e.printStackTrace()
                         Toast.makeText(
-                            this@UserProfileActivity,
+                            this@GuideProfileActivity,
                             "Image selection failed",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -221,7 +221,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    private fun validateUserProfileDetails(): Boolean{
+    private fun validateGuideProfileDetails(): Boolean{
         return when {
             TextUtils.isEmpty(binding.etMobileNumber.text.toString().trim{it <= ' '}) -> {
                 showErrorSnackBar("Please enter your phone number", true)
@@ -234,9 +234,9 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     fun imageUploadSuccess(imageURL: String){
 
-        mUserProfileImageURL = imageURL
+        mGuideProfileImageURL = imageURL
 
-        updateUserProfileDetails()
+        updateGuideProfileDetails()
     }
 
     override fun onClick(v: View?) {
@@ -249,4 +249,3 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
     }
 }
-

@@ -1,4 +1,4 @@
-package com.example.zertte.ui.activities.user
+package com.example.zertte.ui.activities.guide
 
 import android.content.Intent
 import android.os.Build
@@ -8,21 +8,20 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.zertte.R
-import com.example.zertte.databinding.ActivitySignInBinding
-import com.example.zertte.model.User
-import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.databinding.ActivitySignInGuidesBinding
+import com.example.zertte.model.Guide
 import com.example.zertte.ui.activities.BaseActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-class ActivitySignIn : BaseActivity() {
-    private lateinit var binding: ActivitySignInBinding
+class ActivitySignInGuide : BaseActivity() {
+    private lateinit var binding: ActivitySignInGuidesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignInBinding.inflate(layoutInflater)
+        binding = ActivitySignInGuidesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         @Suppress("DEPRECATION")
@@ -40,7 +39,7 @@ class ActivitySignIn : BaseActivity() {
         }
 
         binding.signInButton.setOnClickListener {
-            registerUser()
+            registerGuide()
         }
     }
 
@@ -100,7 +99,7 @@ class ActivitySignIn : BaseActivity() {
         }
     }
 
-    private fun registerUser(){
+    private fun registerGuide(){
 
         showProgressDialog("Please, wait...")
 
@@ -113,16 +112,16 @@ class ActivitySignIn : BaseActivity() {
                     OnCompleteListener<AuthResult>{ task ->
 
                         if(task.isSuccessful){
-                            val firebaseUser: FirebaseUser = task.result!!.user!!
+                            val firebaseGuide: FirebaseUser = task.result!!.user!!
 
-                            val user = User(
-                                firebaseUser.uid,
+                            val guide = Guide(
+                                firebaseGuide.uid,
                                 binding.enterName.text.toString().trim{ it <= ' '},
                                 binding.enterSurname.text.toString().trim{ it <= ' '},
                                 binding.emailEditText.text.toString().trim{ it <= ' '}
-                                )
+                            )
 
-                            FirestoreClass().registerUser(this@ActivitySignIn, user)
+                            FirestoreClassGuides().registerGuide(this@ActivitySignInGuide, guide)
 //                            FirebaseAuth.getInstance().signOut()
 //                            finish()
 
@@ -136,17 +135,17 @@ class ActivitySignIn : BaseActivity() {
         }
     }
 
-    fun userRegistrationSuccess(){
+    fun guideRegistrationSuccess(){
 
         hideProgressDialog()
 
         Toast.makeText(
-            this@ActivitySignIn,
+            this@ActivitySignInGuide,
             "You have registered successfully",
             Toast.LENGTH_SHORT
         ).show()
 
-        val intent = Intent(this@ActivitySignIn, ActivityLogin::class.java)
+        val intent = Intent(this@ActivitySignInGuide, ActivityLoginGuide::class.java)
         startActivity(intent)
         finish()
     }

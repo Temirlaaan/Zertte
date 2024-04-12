@@ -22,13 +22,13 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.zertte.ui.activities.ActivityLogin"
+        android:name="com.example.zertte.ui.activities.user.ActivityLogin"
         android:label="fragment_login"
         tools:layout="@layout/activity_login" />
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.zertte.ui.activities.ActivitySignIn"
+        android:name="com.example.zertte.ui.activities.user.ActivitySignIn"
         android:label="fragment_sign_in"
         tools:layout="@layout/activity_sign_in" />
 

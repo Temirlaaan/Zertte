@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.zertte.R
 import com.example.zertte.databinding.FragmentMainBinding
 import com.example.zertte.model.User
-import com.example.zertte.ui.activities.SettingsActivity
+import com.example.zertte.ui.activities.user.SettingsActivity
 import com.example.zertte.utils.Constants
 
 

@@ -1,4 +1,4 @@
-package com.example.zertte.ui.activities.user
+package com.example.zertte.ui.activities.guide
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,51 +8,49 @@ import android.text.TextUtils
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.example.zertte.MainActivity
+import com.example.zertte.MainActivityGuide
 import com.example.zertte.R
-import com.example.zertte.databinding.ActivityLoginBinding
-import com.example.zertte.model.User
-import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.databinding.ActivityLoginGuidesBinding
+import com.example.zertte.model.Guide
 import com.example.zertte.ui.activities.BaseActivity
 import com.example.zertte.ui.activities.ForgotPasswordActivity
-import com.example.zertte.ui.activities.guide.ActivityLoginGuide
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
-class ActivityLogin : BaseActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityLoginBinding
+class ActivityLoginGuide : BaseActivity(), View.OnClickListener {
+
+    private lateinit var binding: ActivityLoginGuidesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginGuidesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-    @Suppress("DEPRECATION")
-    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
-        window.insetsController?.hide(WindowInsets.Type.statusBars())
-    }else {
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-    }
+        @Suppress("DEPRECATION")
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        }else {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
         binding.forgotYourPassword.setOnClickListener(this)
         binding.loginButton.setOnClickListener(this)
         binding.tvRegister.setOnClickListener(this)
-        binding.guide.setOnClickListener(this)
     }
 
-    fun userLoggedInSuccess(user: User){
+    fun guideLoggedInSuccess(guide: Guide){
 
         hideProgressDialog()
 
-        if(user.profileCompleted == 0){
-            val intent = Intent(this@ActivityLogin, UserProfileActivity::class.java)
-            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+        if(guide.profileCompleted == 0){
+            val intent = Intent(this@ActivityLoginGuide, GuideProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_GUIDE_DETAILS, guide)
             startActivity(intent)
         }else{
-            startActivity(Intent(this@ActivityLogin, MainActivity::class.java))
+            startActivity(Intent(this@ActivityLoginGuide, MainActivityGuide::class.java))
         }
         finish()
     }
@@ -62,21 +60,16 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
             when(view.id){
 
                 R.id.forgot_your_password -> {
-                    val intent = Intent(this@ActivityLogin, ForgotPasswordActivity::class.java)
+                    val intent = Intent(this@ActivityLoginGuide, ForgotPasswordActivity::class.java)
                     startActivity(intent)
                 }
 
                 R.id.loginButton -> {
-                    loginRegisteredUser()
+                    loginRegisteredGuide()
                 }
 
                 R.id.tv_register -> {
-                    val intent = Intent(this@ActivityLogin, ActivitySignIn::class.java)
-                    startActivity(intent)
-                }
-
-                R.id.guide -> {
-                    val intent = Intent(this@ActivityLogin, ActivityLoginGuide::class.java)
+                    val intent = Intent(this@ActivityLoginGuide, ActivitySignInGuide::class.java)
                     startActivity(intent)
                 }
             }
@@ -85,8 +78,8 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
 
     @SuppressLint("SuspiciousIndentation")
     private fun validateLoginDetails(): Boolean {
-    val emailRegex = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})") // Регулярное выражение для адреса электронной почты
-    val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%^&+=])(?=\\S+\$).{8,}") // Регулярное выражение для пароля
+        val emailRegex = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})") // Регулярное выражение для адреса электронной почты
+        val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%^&+=])(?=\\S+\$).{8,}") // Регулярное выражение для пароля
 
         return when {
             TextUtils.isEmpty(binding.emailEditText.text.toString().trim { it <= ' ' }) -> {
@@ -111,7 +104,7 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
         }
     }
 
-    private fun loginRegisteredUser(){
+    private fun loginRegisteredGuide(){
 
         if(validateLoginDetails()){
 
@@ -124,7 +117,7 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
                 .addOnCompleteListener{task->
 
                     if(task.isSuccessful){
-                        FirestoreClass().getUserDetails(this@ActivityLogin)
+                        FirestoreClassGuides().getGuideDetails(this@ActivityLoginGuide)
                     }else{
                         hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(), true)

@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Zertte">
         <activity
-            android:name=".ui.activities.UserProfileActivity"
+            android:name=".ui.activities.user.UserProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.ForgotPasswordActivity"
@@ -41,9 +41,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.ActivityLogin" />
-        <activity android:name=".ui.activities.ActivitySignIn" />
+        <activity android:name=".ui.activities.user.ActivityLogin" />
+        <activity android:name=".ui.activities.user.ActivitySignIn" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ui.activities.SettingsActivity"/>
+        <activity android:name=".ui.activities.user.SettingsActivity"/>
+
+        <activity android:name=".ui.activities.guide.ActivityLoginGuide"/>
+        <activity android:name=".ui.activities.guide.ActivitySignInGuide"/>
+        <activity android:name=".ui.activities.guide.SettingsActivityGuide"/>
+        <activity android:name=".ui.activities.guide.GuideProfileActivity"/>
+
+        <activity android:name=".MainActivityGuide"/>
+
+        <activity android:name=".ui.activities.guide.AddPlaceActivity"/>
+
     </application>
 </manifest>

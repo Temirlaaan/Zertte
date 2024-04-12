@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/darkGray">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/rounded_bottom_corners"/>
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_back"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/stroke"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/profile_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:layout_margin="10dp"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:elevation="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardInCard"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:elevation="30dp"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="20dp">
+
+                <ImageView
+                    android:id="@+id/imgViewProfile"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/greetings"
+                    android:contentDescription="@string/image" />
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/edit"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:text="Edit"
+                android:background="@drawable/rounded_corner"
+                android:textColor="@color/darkGray"
+                android:backgroundTint="@color/white"
+                android:elevation="30dp"
+                android:layout_toRightOf="@+id/cardInCard"
+                android:layout_marginTop="190dp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_horizontal|center_vertical"/>
+
+            <TextView
+                android:id="@+id/nameSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temirlan Bissengaliyev"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/cardInCard"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/darkGray"/>
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:textSize="15sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/nameSurname"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/darkGray"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bisengaliev@gmail.com"
+                android:textSize="15sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/gender"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/darkGray"/>
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12345678"
+                android:textSize="15sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/email"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/darkGray"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/tapsyrystar"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_more"
+        android:layout_below="@+id/card"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:elevation="10dp"
+        android:textColor="@color/darkGray">
+
+        <TextView
+            android:id="@+id/tapsyrystarTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tapsyrystar"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:textAlignment="viewStart"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/darkGray">
+        </TextView>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_chevron_right_24"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            app:tint="@color/darkGray" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Shygu"
+        android:background="@drawable/rounded_corner"
+        android:layout_centerVertical="true"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/jihankezColor"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tapsyrystar"
+        android:layout_marginTop="80dp"/>
+
+</RelativeLayout>
