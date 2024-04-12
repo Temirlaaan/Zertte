@@ -4,7 +4,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginHorizontal="16dp">
+    android:background="@drawable/bc_sign_in">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/introduction"
@@ -12,35 +23,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp">
 
-    <TextView
-        android:id="@+id/salem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/darkGray"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:text="Sälem,"/>
+        <TextView
+            android:id="@+id/salem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:text="Sälem,"/>
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/salem"
-        android:textColor="@color/darkGray"
-        android:textStyle="bold"
-        android:layout_marginLeft="5dp"
-        android:textSize="24sp"
-        android:text="Temirlan"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/salem"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:textSize="24sp"
+            android:text="Temirlan"/>
 
-    <TextView
-        android:id="@+id/kaida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/salem"
-        android:textColor="@color/darkGray"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:text="Bügın qaida baramyz?"/>
+        <TextView
+            android:id="@+id/kaida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/salem"
+            android:textColor="@color/darkGray"
+            android:textStyle="bold"
+            android:textSize="28sp"
+            android:text="Bügın qaida baramyz?"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilePhoto"
@@ -55,7 +66,7 @@
 
     </RelativeLayout>
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/firstCard"
                 android:layout_width="80dp"
@@ -204,16 +215,19 @@
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
-    </HorizontalScrollView>
+    </HorizontalScrollView>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/welcomeKZ"
+        android:id="@+id/welcomeK"
         android:layout_width="190dp"
         android:layout_height="280dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/categories2">
+        app:cardElevation="10dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -221,7 +235,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/greetings"
             android:adjustViewBounds="true"/>
-        
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -234,17 +248,14 @@
             android:text="Qazaqstanğa qoş keldıñız!" />
 
     </androidx.cardview.widget.CardView>
-    
+
     <androidx.cardview.widget.CardView
-        android:id="@+id/langGuide"
+        android:id="@+id/langGuid"
         android:layout_width="180dp"
         android:layout_height="135dp"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/welcomeKZ"
         android:layout_alignParentEnd="true"
-        app:cardCornerRadius="10dp"
-        android:layout_below="@+id/categories2">
+        app:cardCornerRadius="10dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -269,11 +280,9 @@
         android:layout_width="180dp"
         android:layout_height="135dp"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/welcomeKZ"
-        android:layout_marginLeft="10dp"
         app:cardCornerRadius="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/langGuide">
+        android:layout_below="@+id/langGuid"
+        android:layout_alignParentEnd="true">
 
         <ImageView
             android:layout_width="match_parent"
@@ -293,6 +302,8 @@
             android:text="Keñester"/>
     </androidx.cardview.widget.CardView>
 
+        </RelativeLayout>
+
     <TextView
         android:id="@+id/enTanymal"
         android:layout_width="wrap_content"
@@ -300,7 +311,7 @@
         android:layout_below="@+id/welcomeKZ"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="10dp"
-        android:text="Eñ tanymal oryndar"
+        android:text="Gidtar ūsynğan oryndar"
         android:textStyle="bold"
         android:textSize="24sp"
         android:textColor="@color/darkGray"/>
@@ -313,4 +324,8 @@
         android:layout_below="@+id/enTanymal"
         tools:listitem="@layout/item_popular_main"/>
 
+
+
+    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

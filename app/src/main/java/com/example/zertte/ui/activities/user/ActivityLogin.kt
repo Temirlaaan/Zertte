@@ -13,6 +13,7 @@ import com.example.zertte.R
 import com.example.zertte.databinding.ActivityLoginBinding
 import com.example.zertte.model.User
 import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.ui.activities.guide.ActivityLoginGuide
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
@@ -37,6 +38,7 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
         binding.forgotYourPassword.setOnClickListener(this)
         binding.loginButton.setOnClickListener(this)
         binding.tvRegister.setOnClickListener(this)
+        binding.guide.setOnClickListener(this)
     }
 
     fun userLoggedInSuccess(user: User){
@@ -68,6 +70,11 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
 
                 R.id.tv_register -> {
                     val intent = Intent(this@ActivityLogin, ActivitySignIn::class.java)
+                    startActivity(intent)
+                }
+
+                R.id.guide -> {
+                    val intent = Intent(this@ActivityLogin, ActivityLoginGuide::class.java)
                     startActivity(intent)
                 }
             }

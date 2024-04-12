@@ -8,7 +8,9 @@ import android.webkit.MimeTypeMap
 
 object Constants {
     const val USERS: String = "users"
+    const val GUIDES: String = "guides"
     const val PRODUCTS: String = "products"
+
 
     const val ZERTTE_PREFERENCES: String = "ZerttePrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
@@ -25,7 +27,7 @@ object Constants {
     const val USER_PROFILE_IMAGE:String = "user_profile_image"
     const val COMPLETE_PROFILE: String = "profileCompleted"
 
-   /* const val PRODUCT_IMMAGE: String = "Product_Image"
+   /* const val PRODUCT_IMAGE: String = "Product_Image"
 
     const val USER_ID: String = "user_id"*/
 

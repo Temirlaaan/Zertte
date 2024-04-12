@@ -1,5 +1,6 @@
 package com.example.zertte.ui.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
@@ -129,6 +130,8 @@ class ActivitySignIn : BaseActivity() {
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     })
+        }else {
+            hideProgressDialog() // Добавляем вызов hideProgressDialog() в случае невалидных данных
         }
     }
 
@@ -141,5 +144,9 @@ class ActivitySignIn : BaseActivity() {
             "You have registered successfully",
             Toast.LENGTH_SHORT
         ).show()
+
+        val intent = Intent(this@ActivitySignIn, ActivityLogin::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -1,7 +1,16 @@
 package com.example.zertte.ui.Fragments
 
-/*
-open class BaseFragment : Fragment() {
+import android.app.Dialog
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.example.zertte.R
+import com.example.zertte.databinding.FragmentBaseBinding
+
+open class BaseFragment(fragmentMain: Any) : Fragment() {
 
     private var _binding: FragmentBaseBinding? = null
     private val binding get() = _binding!!
@@ -10,7 +19,7 @@ open class BaseFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        savedInstanceState: Bundle?
         ): View? {
 
             _binding = FragmentBaseBinding.inflate(inflater, container, false)
@@ -41,4 +50,4 @@ open class BaseFragment : Fragment() {
 
             _binding = null
         }
-    }*/
+    }

@@ -18,6 +18,10 @@ class FragmentMain: Fragment(R.layout.fragment_main) {
     private val binding get() = _binding!!
     private lateinit var mUserDetails: User
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,7 +40,6 @@ class FragmentMain: Fragment(R.layout.fragment_main) {
             startActivity(Intent(activity, SettingsActivity::class.java))
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

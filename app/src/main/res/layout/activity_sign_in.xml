@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/zertte"
         android:textStyle="bold|normal"
-        android:paddingTop="90dp"
+        android:paddingTop="45dp"
         android:textSize="64sp"
         android:textAlignment="center"
         android:textColor="@color/jihankezColor"/>
@@ -112,6 +112,43 @@
         android:autofillHints="password"
         android:inputType="textPassword" />
 
+    <RadioGroup
+        android:id="@+id/rg_tandau"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/confirmPassword"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_client"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="Client"
+            android:layout_margin="5dp"
+            android:button="@drawable/drawable_gender_tab_selector"
+            android:background="@drawable/drawable_gender_tab_selector"
+            android:textColor="@color/gray"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/rb_guide"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:button="@drawable/drawable_gender_tab_selector"
+            android:background="@drawable/drawable_gender_tab_selector"
+            android:text="Guide"
+            android:layout_margin="5dp"
+            android:textColor="@color/gray"
+            android:textStyle="bold"/>
+    </RadioGroup>
+
     <Button
         android:id="@+id/signInButton"
         android:layout_width="200dp"
@@ -121,8 +158,8 @@
         android:layout_centerVertical="true"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/confirmPassword"
-        android:layout_marginTop="30dp"/>
+        android:layout_below="@+id/rg_tandau"
+        android:layout_marginTop="16dp"/>
 
     <View
         android:id="@+id/line"
