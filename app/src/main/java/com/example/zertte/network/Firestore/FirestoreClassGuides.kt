@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.example.zertte.model.Guide
 import com.example.zertte.model.Place
+import com.example.zertte.ui.Fragments.FragmentPlacesGuide
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -238,6 +240,45 @@ class FirestoreClassGuides {
                     "Error while uploading the product details.",
                     e
                 )
+            }
+    }
+
+    fun getPlacesList(fragment: Fragment) {
+        // The collection name for PRODUCTS
+        mFireStore.collection(Constants.PLACES)
+            .whereEqualTo(Constants.GUIDE_ID, getCurrentGuideID())
+            .get() // Will get the documents snapshots.
+            .addOnSuccessListener { document ->
+
+                // Here we get the list of boards in the form of documents.
+                Log.e("Products List", document.documents.toString())
+
+                // Here we have created a new instance for Products ArrayList.
+                val placesList: ArrayList<Place> = ArrayList()
+
+                // A for loop as per the list of documents to convert them into Products ArrayList.
+                for (i in document.documents) {
+
+                    val place = i.toObject(Place::class.java)
+                    place!!.place_id = i.id
+
+                    placesList.add(place)
+                }
+
+                when (fragment) {
+                    is FragmentPlacesGuide -> {
+                        fragment.successPlacesListFromFireStore(placesList)
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                // Hide the progress dialog if there is any error based on the base class instance.
+                when (fragment) {
+                    is FragmentPlacesGuide -> {
+                        fragment.hideProgressDialog()
+                    }
+                }
+                Log.e("Get Product List", "Error while getting product list.", e)
             }
     }
 }
