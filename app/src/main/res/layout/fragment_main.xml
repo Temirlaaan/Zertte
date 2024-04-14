@@ -6,10 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bc_sign_in">
 
-    <ScrollView
+<!--    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none">-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -317,15 +317,15 @@
         android:textColor="@color/darkGray"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularRv"
+        android:id="@+id/rv_main_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/enTanymal"
         tools:listitem="@layout/item_popular_main"/>
 
-
-
     </LinearLayout>
+<!--
     </ScrollView>
+-->
 </RelativeLayout>

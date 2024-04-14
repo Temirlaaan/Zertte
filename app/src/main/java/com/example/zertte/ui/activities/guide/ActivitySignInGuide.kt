@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivitySignInGuidesBinding
 import com.example.zertte.model.Guide
+import com.example.zertte.network.Firestore.FirestoreClassGuides
 import com.example.zertte.ui.activities.BaseActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult

@@ -1,4 +1,4 @@
-package com.example.zertte.ui.activities.guide
+package com.example.zertte.network.Firestore
 
 import android.app.Activity
 import android.content.Context
@@ -9,6 +9,11 @@ import androidx.fragment.app.Fragment
 import com.example.zertte.model.Guide
 import com.example.zertte.model.Place
 import com.example.zertte.ui.Fragments.FragmentPlacesGuide
+import com.example.zertte.ui.activities.guide.ActivityLoginGuide
+import com.example.zertte.ui.activities.guide.ActivitySignInGuide
+import com.example.zertte.ui.activities.guide.AddPlaceActivity
+import com.example.zertte.ui.activities.guide.GuideProfileActivity
+import com.example.zertte.ui.activities.guide.SettingsActivityGuide
 import com.example.zertte.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -238,6 +243,26 @@ class FirestoreClassGuides {
                 Log.e(
                     activity.javaClass.simpleName,
                     "Error while uploading the product details.",
+                    e
+                )
+            }
+    }
+
+
+    fun deletePlace(fragment: FragmentPlacesGuide, placeId: String){
+        mFireStore.collection(Constants.PLACES)
+            .document(placeId)
+            .delete()
+            .addOnSuccessListener{
+                fragment.placeDeleteSuccess()
+            }
+            .addOnFailureListener{ e ->
+
+                fragment.hideProgressDialog()
+
+                Log.e(
+                    fragment.requireActivity().javaClass.simpleName,
+                    "Error while deleting the place.",
                     e
                 )
             }

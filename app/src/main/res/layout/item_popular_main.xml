@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="190dp"
+    android:layout_width="185dp"
     android:layout_height="280dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     app:cardBackgroundColor="@color/white"
-    android:layout_margin="0dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
     app:cardElevation="8dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="false">
 
     <ImageView
+        android:id="@+id/place_image_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/charyn"
@@ -25,14 +27,29 @@
         android:layout_gravity="end"
         android:layout_margin="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/place_name_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Charyn kanöny"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"/>
+        android:textColor="@color/white" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/place_price_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 000"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
     
 </androidx.cardview.widget.CardView>

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.zertte.R
 import com.example.zertte.databinding.FragmentBaseBinding
 
-open class BaseFragment(fragmentMain: Any) : Fragment() {
+open class BaseFragment() : Fragment() {
 
     private var _binding: FragmentBaseBinding? = null
     private val binding get() = _binding!!

@@ -5,7 +5,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import com.example.zertte.model.Place
 import com.example.zertte.model.User
+import com.example.zertte.ui.Fragments.FragmentMain
 import com.example.zertte.ui.activities.user.ActivityLogin
 import com.example.zertte.ui.activities.user.ActivitySignIn
 import com.example.zertte.ui.activities.user.SettingsActivity
@@ -173,6 +175,30 @@ class FirestoreClass {
                     exception.message,
                     exception
                 )
+            }
+    }
+
+    fun getMainItemsList(fragment: FragmentMain){
+        mFireStore.collection(Constants.PLACES)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+
+                val placesList: ArrayList<Place> = ArrayList()
+
+                for(i in document.documents){
+
+                    val place = i.toObject(Place::class.java)!!
+                    place.place_id=i.id
+                    placesList.add(place)
+                }
+
+                fragment.successMainItemsList(placesList)
+            }
+            .addOnFailureListener{
+                e ->
+                fragment.hideProgressDialog()
+                Log.e(fragment.javaClass.simpleName, "Error while getting main items list.", e)
             }
     }
 }

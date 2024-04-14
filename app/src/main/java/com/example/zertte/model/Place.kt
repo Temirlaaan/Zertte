@@ -14,5 +14,5 @@ data class Place(
         val image: String = "",
         val person_quantity: String = "",
         val rating: String = "",
-        val id: String = "",
+        var place_id: String = "",
 ): Parcelable

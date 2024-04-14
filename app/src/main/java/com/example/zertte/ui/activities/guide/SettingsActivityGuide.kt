@@ -6,7 +6,9 @@ import android.view.View
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivitySettingsGuidesBinding
 import com.example.zertte.model.Guide
+import com.example.zertte.network.Firestore.FirestoreClassGuides
 import com.example.zertte.ui.activities.BaseActivity
+import com.example.zertte.ui.activities.user.ActivityLogin
 import com.example.zertte.utils.Constants
 import com.example.zertte.utils.GlideLoader
 import com.google.firebase.auth.FirebaseAuth
@@ -62,7 +64,7 @@ class SettingsActivityGuide: BaseActivity(), View.OnClickListener {
 
                 R.id.logOut ->{
                     FirebaseAuth.getInstance().signOut()
-                    val intent = Intent(this@SettingsActivityGuide, ActivityLoginGuide::class.java)
+                    val intent = Intent(this@SettingsActivityGuide, ActivityLogin::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()

@@ -3,46 +3,83 @@ package com.example.zertte.ui.Fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
-import com.example.zertte.R
+import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.zertte.databinding.FragmentMainBinding
-import com.example.zertte.model.User
+import com.example.zertte.model.Place
+import com.example.zertte.network.Firestore.FirestoreClass
+import com.example.zertte.ui.adapters.MyPlacesMainListAdapter
 import com.example.zertte.ui.activities.user.SettingsActivity
 import com.example.zertte.utils.Constants
+import com.example.zertte.utils.GlideLoader
 
 
-class FragmentMain: Fragment(R.layout.fragment_main) {
+class FragmentMain: BaseFragment() {
 
-    private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var mUserDetails: User
+    private lateinit var binding: FragmentMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
 
-        _binding = FragmentMainBinding.bind(view)
+        getMainItemsList()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        binding = FragmentMainBinding.inflate(inflater, container, false)
 
         val context = requireContext()
 
         val sharedPreferences =
             context.getSharedPreferences(Constants.ZERTTE_PREFERENCES, Context.MODE_PRIVATE)
+
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
-        val firstName = username.split(" ").first() // Получить только имя
+        val firstName = username.split(" ").first()
+
+        val userImage = sharedPreferences.getString(Constants.USER_PROFILE_IMAGE, "")!!
+
+        GlideLoader(context).loadUserPicture(userImage, binding.profilePhoto)
+
 
         binding.name.text = firstName
 
         binding.profilePhoto.setOnClickListener {
             startActivity(Intent(activity, SettingsActivity::class.java))
         }
+
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null // Clear the binding when the view is destroyed
+    fun successMainItemsList(mainItemsList: ArrayList<Place>){
+        hideProgressDialog()
+
+        if(mainItemsList.size > 0){
+            binding.rvMainItems.visibility = View.VISIBLE
+
+            binding.rvMainItems.layoutManager = GridLayoutManager(activity, 2)
+            binding.rvMainItems.setHasFixedSize(true)
+
+            val adapterPlaces = MyPlacesMainListAdapter(requireActivity(), mainItemsList)
+            binding.rvMainItems.adapter = adapterPlaces
+        }else{
+            binding.rvMainItems.visibility = View.GONE
+        }
+
+    }
+
+    private fun getMainItemsList(){
+        showProgressDialog("Please, wait...")
+
+        FirestoreClass().getMainItemsList(this@FragmentMain)
     }
 }

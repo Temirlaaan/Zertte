@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.example.zertte.R
 import com.example.zertte.databinding.ActivityAddPlaceBinding
 import com.example.zertte.model.Place
+import com.example.zertte.network.Firestore.FirestoreClassGuides
 import com.example.zertte.ui.activities.BaseActivity
 import com.example.zertte.utils.Constants
 import com.example.zertte.utils.GlideLoader

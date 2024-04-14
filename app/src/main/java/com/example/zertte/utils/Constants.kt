@@ -36,7 +36,7 @@ object Constants {
 
     const val PLACE_IMAGE: String = "Place_Image"
 
-    const val USER_ID: String = "user_id"
+    const val GUIDE_ID: String = "user_id"
 
     fun showImageChooser(activity: Activity){
         val galleryIntent = Intent(
