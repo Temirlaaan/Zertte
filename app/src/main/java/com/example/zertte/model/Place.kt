@@ -10,9 +10,10 @@ data class Place(
         val title: String = "",
         val price: String = "",
         val description: String = "",
-        val location: String = "",
-        val image: String = "",
         val person_quantity: String = "",
+        val image: String = "",
+        val location: String = "",
         val rating: String = "",
         var place_id: String = "",
+        var isFavourite: Boolean = false
 ): Parcelable

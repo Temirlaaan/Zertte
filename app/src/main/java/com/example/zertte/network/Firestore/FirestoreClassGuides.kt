@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.zertte.model.Guide
 import com.example.zertte.model.Place
 import com.example.zertte.ui.Fragments.FragmentPlacesGuide
+import com.example.zertte.ui.activities.PlaceDetailsActivity
 import com.example.zertte.ui.activities.guide.ActivityLoginGuide
 import com.example.zertte.ui.activities.guide.ActivitySignInGuide
 import com.example.zertte.ui.activities.guide.AddPlaceActivity
@@ -248,6 +249,23 @@ class FirestoreClassGuides {
             }
     }
 
+    fun getPlaceDetails(activity: PlaceDetailsActivity, placeId: String){
+        mFireStore.collection(Constants.PLACES)
+            .document(placeId)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.toString())
+                val place = document.toObject(Place::class.java)
+                if (place != null) {
+                    activity.placeDetailsSuccess(place)
+                }
+            }
+            .addOnFailureListener {e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error getting place details", e)
+
+            }
+    }
 
     fun deletePlace(fragment: FragmentPlacesGuide, placeId: String){
         mFireStore.collection(Constants.PLACES)
@@ -306,4 +324,5 @@ class FirestoreClassGuides {
                 Log.e("Get Product List", "Error while getting product list.", e)
             }
     }
+
 }

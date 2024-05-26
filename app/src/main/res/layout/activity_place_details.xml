@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/titileLn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back"
+                android:background="@drawable/stroke"/>
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details"
+                android:layout_margin="10dp"
+                android:layout_centerInParent="true"
+                android:textSize="36sp"
+                android:textColor="#335058" />
+
+        </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
+        android:layout_below="@+id/titileLn">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/locationImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/charin_canyon" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <RelativeLayout
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/card">
+
+
+        <TextView
+            android:id="@+id/place_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Charyn kanöny"
+            android:textSize="30sp"
+            android:textColor="@color/darkGray"
+            tools:ignore="HardcodedText" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            app:tint="@color/yellow"
+            android:layout_toStartOf="@+id/rating"
+            android:layout_marginEnd="5dp"/>
+
+        <TextView
+            android:id="@+id/location_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9990"
+            android:textSize="20sp"
+            android:layout_below="@+id/place_name"
+            android:textColor="@color/darkGray"
+            tools:ignore="HardcodedText"/>
+
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_5_0"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/ic_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_price"
+            android:src="@drawable/ic_location"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/location_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ic_place"
+            android:layout_below="@+id/location_price"
+            android:textColor="@color/black"
+            android:text="Almaty"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/location_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_name"
+            android:text="Чарынский каньон — это одно из самых удивительных мест в Казахстане. Расположенный в Чарынском национальном парке, каньон поражает своей красотой и уникальным ландшафтом. Величественные скалы из красноватого песчаника, формирующие узкие ущелья и глубокие овраги, создают захватывающий вид."
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:justificationMode="inter_word"/>
+
+        <LinearLayout
+            android:id="@+id/quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_description">
+
+        <TextView
+            android:id="@+id/tv_location_person_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adamdar sany: "
+            android:textSize="20sp"
+            android:textColor="@color/darkGray"
+            android:layout_marginTop="10dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/location_person_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textSize="20sp"
+            android:background="@drawable/stroke"
+            android:padding="5dp"
+            android:textColor="@color/darkGray"
+            android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sebetke qosu"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner"
+            android:layout_below="@+id/quantity"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/go_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sebetke baru"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner"
+            android:layout_below="@+id/btn_add_to_cart"
+            android:visibility="gone"
+            android:layout_marginTop="15dp"/>
+
+    </RelativeLayout>
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

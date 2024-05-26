@@ -184,6 +184,4 @@ class AddPlaceActivity: BaseActivity(), View.OnClickListener  {
             }
         }
     }
-
-
 }

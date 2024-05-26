@@ -24,8 +24,8 @@ app:cardUseCompatPadding="true">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/place_image_guide"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:contentDescription="@string/place_image_description"
         android:src="@drawable/charin_canyon"
         android:scaleType="centerCrop"

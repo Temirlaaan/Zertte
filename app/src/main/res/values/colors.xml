@@ -9,4 +9,6 @@
     <color name="red">#FF0000</color>
     <color name="colorSnackBarError">#FF0000</color>
     <color name="colorSnackBarSuccess">#4AF524</color>
+    <color name="green">#2A9911</color>
+
 </resources>

@@ -2,136 +2,147 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
 
-    <View
-        android:id="@+id/view"
+    <RelativeLayout
+        android:id="@+id/titileLn"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/rounded_bottom_corners"/>
-
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_margin="20dp"
-        android:src="@drawable/ic_back"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/stroke"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:id="@+id/profile_tv"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        android:layout_margin="10dp"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"/>
+        android:padding="16dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card"
-        android:layout_width="350dp"
-        android:layout_height="400dp"
-        android:elevation="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        app:cardCornerRadius="20dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/stroke"/>
+
+        <TextView
+            android:id="@+id/profile_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:layout_margin="10dp"
+            android:layout_centerInParent="true"
+            android:textSize="36sp"
+            android:textColor="#335058" />
+
+    </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:elevation="50dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardInCard"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:elevation="30dp"
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        app:cardCornerRadius="20dp">
-
-        <ImageView
-            android:id="@+id/imgViewProfile"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/greetings"
-            android:contentDescription="@string/image" />
-
-    </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/edit"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:text="Edit"
-            android:background="@drawable/rounded_corner"
-            android:textColor="@color/darkGray"
-            android:backgroundTint="@color/white"
-            android:elevation="30dp"
-            android:layout_toRightOf="@+id/cardInCard"
-            android:layout_marginTop="190dp"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center_horizontal|center_vertical"/>
-
-        <TextView
-            android:id="@+id/nameSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Temirlan Bissengaliyev"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/cardInCard"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/darkGray"/>
-
-            <TextView
-                android:id="@+id/gender"
+            <RelativeLayout
+                android:id="@+id/Rl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/nameSurname"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/darkGray"/>
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="20dp">
 
-            <TextView
-                android:id="@+id/email"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgViewProfile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/greetings"
+                    app:civ_border_color="@color/jihankezColor"
+                    android:layout_marginEnd="20dp" />
+
+                <TextView
+                    android:id="@+id/nameSurname"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Temirlan Bissengaliyev"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/imgViewProfile"
+                    android:textColor="@color/darkGray"/>
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="15sp"
+                    android:layout_toRightOf="@+id/imgViewProfile"
+                    android:layout_below="@+id/nameSurname"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/darkGray"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bisengaliev@gmail.com"
+                    android:textSize="15sp"
+                    android:layout_toRightOf="@+id/imgViewProfile"
+                    android:layout_below="@+id/gender"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/darkGray"/>
+
+                <Button
+                    android:id="@+id/edit"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:text="Edit"
+                    android:background="@drawable/rounded_corner"
+                    android:textColor="@color/darkGray"
+                    android:backgroundTint="@color/white"
+                    android:elevation="30dp"
+                    android:layout_toRightOf="@+id/nameSurname"
+                    android:layout_marginRight="5dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/Rl2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="bisengaliev@gmail.com"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/gender"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/darkGray"/>
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_below="@+id/Rl">
 
-            <TextView
-                android:id="@+id/phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12345678"
-                android:textSize="15sp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/email"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/darkGray"/>
+                <TextView
+                    android:id="@+id/about_myself"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textColor="@color/darkGray"
+                    android:text="Здравствуйте! Меня зовут Сергей Викторович Кузнецов, и я рад поделиться с вами своей историей."
+                    />
 
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="87776654442"
+                    android:textSize="15sp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/about_myself"
+                    android:textColor="@color/darkGray"/>
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/Rl2"/>
+
 
     <RelativeLayout
-        android:id="@+id/tapsyrystar"
+        android:id="@+id/tapsyrystarClient"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/round_more"
-        android:layout_below="@+id/card"
+        android:layout_below="@+id/line"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:elevation="10dp"
@@ -169,7 +180,9 @@
         android:backgroundTint="@color/white"
         android:textColor="@color/jihankezColor"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tapsyrystar"
+        android:layout_below="@+id/tapsyrystarClient"
         android:layout_marginTop="80dp"/>
 
+
+</RelativeLayout>
 </RelativeLayout>

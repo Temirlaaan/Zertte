@@ -26,6 +26,7 @@ class SettingsActivity: BaseActivity(), View.OnClickListener {
         binding.edit.setOnClickListener(this)
         binding.logOut.setOnClickListener(this)
         binding.back.setOnClickListener(this)
+        binding.tapsyrystarClient.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -71,6 +72,10 @@ class SettingsActivity: BaseActivity(), View.OnClickListener {
 
                 R.id.back ->{
                     onBackPressed()
+                }
+
+                R.id.tapsyrystarClient ->{
+                    startActivity(Intent(this@SettingsActivity, CartListActivity::class.java))
                 }
             }
         }

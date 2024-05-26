@@ -5,11 +5,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import com.example.zertte.model.CartItem
 import com.example.zertte.model.Place
 import com.example.zertte.model.User
 import com.example.zertte.ui.Fragments.FragmentMain
+import com.example.zertte.ui.activities.PlaceDetailsActivity
 import com.example.zertte.ui.activities.user.ActivityLogin
 import com.example.zertte.ui.activities.user.ActivitySignIn
+import com.example.zertte.ui.activities.user.CartListActivity
 import com.example.zertte.ui.activities.user.SettingsActivity
 import com.example.zertte.ui.activities.user.UserProfileActivity
 import com.example.zertte.utils.Constants
@@ -178,6 +181,55 @@ class FirestoreClass {
             }
     }
 
+    fun removeItemFromCart(context: Context, cart_id: String){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id) // cart id
+            .delete()
+            .addOnSuccessListener {
+                when(context){
+                    is CartListActivity->{
+                        context.itemRemoveSuccess()
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                when(context){
+                    is CartListActivity -> {
+                        context.hideProgressDialog()
+                    }
+                }
+                Log.e(
+                    context.javaClass.simpleName,
+                    "Error while removing the item from cart list",
+                    e
+                )
+
+            }
+    }
+
+    fun getAllPlacesList(activity: CartListActivity){
+        mFireStore.collection(Constants.PLACES)
+            .get()
+            .addOnSuccessListener { document ->
+                activity.hideProgressDialog()
+                Log.e("Place list", document.documents.toString())
+                val placesList: ArrayList<Place> = ArrayList()
+
+                for(i in document.documents){
+                    val place = i.toObject(Place::class.java)
+                    place!!.place_id = i.id
+
+                    placesList.add(place)
+                }
+
+                activity.successPlacesListFromFireStore(placesList)
+            }.addOnFailureListener {e->
+                activity.hideProgressDialog()
+
+                Log.e("Get Place List", "Error while getting all place list", e)
+            }
+    }
+
     fun getMainItemsList(fragment: FragmentMain){
         mFireStore.collection(Constants.PLACES)
             .get()
@@ -199,6 +251,100 @@ class FirestoreClass {
                 e ->
                 fragment.hideProgressDialog()
                 Log.e(fragment.javaClass.simpleName, "Error while getting main items list.", e)
+            }
+    }
+
+    fun getCartList(activity: Activity){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.GUIDE_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener {document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val list: ArrayList<CartItem> = ArrayList()
+
+                for(i in document.documents){
+
+                    val cartItem = i.toObject(CartItem::class.java)!!
+                    cartItem.id = i.id
+
+                    list.add(cartItem)
+                }
+
+                when(activity){
+                    is CartListActivity->{
+                        activity.successCartItemsList(list)
+                    }
+                }
+            }
+            .addOnFailureListener {
+                 e->
+                when(activity){
+                    is CartListActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                }
+                Log.e(activity.javaClass.simpleName, "Error while getting the cart items", e)
+            }
+    }
+
+    fun updateMyCart(context: Context, cart_id: String, itemHaspMap: HashMap<String, Any>){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document(cart_id)
+            .update(itemHaspMap)
+            .addOnSuccessListener {
+
+                when(context){
+                        is CartListActivity -> {
+                            context.itemUpdateSuccess()
+                        }
+                }
+
+            }
+            .addOnFailureListener { e->
+                when(context){
+                    is CartListActivity -> {
+                        context.hideProgressDialog()
+                    }
+                }
+                Log.e(context.javaClass.simpleName, "Error while updating the cart item", e)
+            }
+    }
+
+    fun checkIfItemExistInCart(activity: PlaceDetailsActivity, placeId: String){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .whereEqualTo(Constants.GUIDE_ID, getCurrentUserID())
+            .whereEqualTo(Constants.PLACE_ID, placeId)
+            .get()
+            .addOnSuccessListener { document->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                if(document.documents.size>0){
+                    activity.placeExistsInCart()
+                }else{
+                    activity.hideProgressDialog()
+                }
+            }
+            .addOnFailureListener{e->
+
+                activity.hideProgressDialog()
+
+            }
+    }
+
+    fun addCartItems(activity: PlaceDetailsActivity, addToCart: CartItem){
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document()
+            .set(addToCart, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.addToCartSuccess()
+            }
+            .addOnFailureListener{e->
+                activity.hideProgressDialog()
+
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating the document for cart item",
+                    e
+                )
             }
     }
 }

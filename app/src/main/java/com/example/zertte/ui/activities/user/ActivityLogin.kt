@@ -85,8 +85,8 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
 
     @SuppressLint("SuspiciousIndentation")
     private fun validateLoginDetails(): Boolean {
-    val emailRegex = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})") // Регулярное выражение для адреса электронной почты
-    val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%^&+=])(?=\\S+\$).{8,}") // Регулярное выражение для пароля
+    val emailRegex = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})")
+    val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%^&+=])(?=\\S+\$).{8,}")
 
         return when {
             TextUtils.isEmpty(binding.emailEditText.text.toString().trim { it <= ' ' }) -> {
@@ -94,7 +94,7 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
                 false
             }
             !emailRegex.matches(binding.emailEditText.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(resources.getString(R.string.err_msg_valid_email), true) // Сообщение об ошибке для неверного формата адреса электронной почты
+                showErrorSnackBar(resources.getString(R.string.err_msg_valid_email), true)
                 false
             }
             TextUtils.isEmpty(binding.passwordEditText.text.toString().trim { it <= ' ' }) -> {
@@ -102,7 +102,7 @@ class ActivityLogin : BaseActivity(), View.OnClickListener {
                 false
             }
             !passwordRegex.matches(binding.passwordEditText.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(resources.getString(R.string.err_msg_valid_password), true) // Сообщение об ошибке для неверного формата пароля
+                showErrorSnackBar(resources.getString(R.string.err_msg_valid_password), true)
                 false
             }
             else -> {

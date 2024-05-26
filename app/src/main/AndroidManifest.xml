@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
         tools:ignore="SelectedPhotoAccess" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_VIDEO"
         tools:ignore="SelectedPhotoAccess" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
@@ -18,6 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Zertte">
+        <activity
+            android:name=".ui.activities.PlaceDetailsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.user.UserProfileActivity"
             android:exported="false" />
@@ -44,16 +50,14 @@
         <activity android:name=".ui.activities.user.ActivityLogin" />
         <activity android:name=".ui.activities.user.ActivitySignIn" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ui.activities.user.SettingsActivity"/>
-
-        <activity android:name=".ui.activities.guide.ActivityLoginGuide"/>
-        <activity android:name=".ui.activities.guide.ActivitySignInGuide"/>
-        <activity android:name=".ui.activities.guide.SettingsActivityGuide"/>
-        <activity android:name=".ui.activities.guide.GuideProfileActivity"/>
-
-        <activity android:name=".MainActivityGuide"/>
-
-        <activity android:name=".ui.activities.guide.AddPlaceActivity"/>
-
+        <activity android:name=".ui.activities.user.SettingsActivity" />
+        <activity android:name=".ui.activities.guide.ActivityLoginGuide" />
+        <activity android:name=".ui.activities.guide.ActivitySignInGuide" />
+        <activity android:name=".ui.activities.guide.SettingsActivityGuide" />
+        <activity android:name=".ui.activities.guide.GuideProfileActivity" />
+        <activity android:name=".MainActivityGuide" />
+        <activity android:name=".ui.activities.guide.AddPlaceActivity" />
+        <activity android:name=".ui.activities.user.CartListActivity"/>
     </application>
+
 </manifest>

@@ -20,11 +20,14 @@
         android:scaleType="centerCrop"/>
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/favourite"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/ic_favorite_border"
-        android:tint="@color/white"
+        android:tint="@color/red"
+        android:background="@drawable/bc_white_circle"
         android:layout_gravity="end"
+        android:padding="5dp"
         android:layout_margin="10dp"/>
 
     <LinearLayout
@@ -51,5 +54,5 @@
             android:textColor="@color/white"/>
 
     </LinearLayout>
-    
+
 </androidx.cardview.widget.CardView>

@@ -6,28 +6,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bc_sign_in">
 
-<!--    <ScrollView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:orientation="vertical">
+        android:layout_height="110dp"
+        android:background="@color/jihankezColor"/>
 
     <RelativeLayout
         android:id="@+id/introduction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="10dp">
 
         <TextView
             android:id="@+id/salem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/darkGray"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="24sp"
             android:text="Sälem,"/>
@@ -37,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/salem"
-            android:textColor="@color/darkGray"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginLeft="5dp"
             android:textSize="24sp"
@@ -48,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/salem"
-            android:textColor="@color/darkGray"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="28sp"
             android:text="Bügın qaida baramyz?"/>
@@ -59,168 +54,20 @@
             android:layout_height="54dp"
             android:src="@drawable/profile_picture"
             app:civ_border_width="2dp"
-            app:civ_border_color="@color/jihankezColor"
+            app:civ_border_color="@color/black"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="2dp"/>
 
     </RelativeLayout>
 
-   <!-- <TextView
-        android:id="@+id/categories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/introduction"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="10dp"
-        android:text="Kategorialar"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="@color/darkGray"/>
-
-    <HorizontalScrollView
-        android:id="@+id/categories2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:layout_below="@+id/categories">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/firstCard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="#FD4747"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/ic_mosque"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical|bottom"
-                    android:textColor="@color/white"
-                    android:text="Tarihi" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/secondCard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="#39ED4B"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/ic_korkem"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical|bottom"
-                    android:textColor="@color/white"
-                    android:text="Korkem" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/thirdCard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="#FFBF1B"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/ic_belsendi"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical|bottom"
-                    android:textColor="@color/white"
-                    android:text="Belsendi" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fourthCard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="#D253FF"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/ic_animal"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical|bottom"
-                    android:textColor="@color/white"
-                    android:text="Qoryqtar" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fifthCard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardBackgroundColor="#47D9ED"
-                app:cardElevation="10dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/ic_mountain"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical|bottom"
-                    android:textColor="@color/white"
-                    android:text="Taular" />
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </HorizontalScrollView>-->
-
         <RelativeLayout
+            android:id="@+id/spravka"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/introduction"
+            android:layout_marginHorizontal="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/welcomeK"
@@ -308,13 +155,14 @@
         android:id="@+id/enTanymal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/welcomeKZ"
+        android:layout_below="@+id/spravka"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="10dp"
         android:text="Gidtar ūsynğan oryndar"
         android:textStyle="bold"
         android:textSize="24sp"
-        android:textColor="@color/darkGray"/>
+        android:textColor="@color/darkGray"
+        android:layout_marginHorizontal="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main_items"
@@ -322,10 +170,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/enTanymal"
-        tools:listitem="@layout/item_popular_main"/>
+        tools:listitem="@layout/item_popular_main"
+        android:layout_marginHorizontal="10dp"/>
 
-    </LinearLayout>
-<!--
-    </ScrollView>
--->
 </RelativeLayout>

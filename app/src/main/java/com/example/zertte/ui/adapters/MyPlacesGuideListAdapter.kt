@@ -1,6 +1,7 @@
 package com.example.zertte.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zertte.R
 import com.example.zertte.model.Place
 import com.example.zertte.ui.Fragments.FragmentPlacesGuide
+import com.example.zertte.ui.activities.PlaceDetailsActivity
+import com.example.zertte.utils.Constants
 import com.example.zertte.utils.GlideLoader
 
 open class MyPlacesGuideListAdapter(
@@ -43,6 +46,13 @@ open class MyPlacesGuideListAdapter(
              holder.placeDelete.setOnClickListener {
                  fragment.deletePlace(model.place_id)
              }
+
+            holder.itemView.setOnClickListener {
+                val intent = Intent(context, PlaceDetailsActivity::class.java)
+                intent.putExtra(Constants.EXTRA_PLACE_ID, model.place_id)
+                intent.putExtra(Constants.EXTRA_PLACE_OWNER_ID, model.user_id)
+                context.startActivity(intent)
+            }
         }
     }
 

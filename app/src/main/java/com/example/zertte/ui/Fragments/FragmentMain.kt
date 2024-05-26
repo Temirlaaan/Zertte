@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zertte.databinding.FragmentMainBinding
 import com.example.zertte.model.Place
 import com.example.zertte.network.Firestore.FirestoreClass
-import com.example.zertte.ui.adapters.MyPlacesMainListAdapter
+import com.example.zertte.ui.activities.PlaceDetailsActivity
 import com.example.zertte.ui.activities.user.SettingsActivity
+import com.example.zertte.ui.adapters.MyPlacesMainListAdapter
 import com.example.zertte.utils.Constants
 import com.example.zertte.utils.GlideLoader
 
@@ -46,7 +47,7 @@ class FragmentMain: BaseFragment() {
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
         val firstName = username.split(" ").first()
 
-        val userImage = sharedPreferences.getString(Constants.USER_PROFILE_IMAGE, "")!!
+        val userImage = sharedPreferences.getString(Constants.IMAGE, "")!!
 
         GlideLoader(context).loadUserPicture(userImage, binding.profilePhoto)
 
@@ -66,15 +67,23 @@ class FragmentMain: BaseFragment() {
         if(mainItemsList.size > 0){
             binding.rvMainItems.visibility = View.VISIBLE
 
-            binding.rvMainItems.layoutManager = GridLayoutManager(activity, 2)
+            binding.rvMainItems.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             binding.rvMainItems.setHasFixedSize(true)
 
             val adapterPlaces = MyPlacesMainListAdapter(requireActivity(), mainItemsList)
             binding.rvMainItems.adapter = adapterPlaces
+
+            adapterPlaces.setOnClickListener(object: MyPlacesMainListAdapter.OnClickListener{
+                override fun onClick(position: Int, place: Place){
+                    val intent = Intent(context, PlaceDetailsActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_PLACE_ID, place.place_id)
+                    intent.putExtra(Constants.EXTRA_PLACE_OWNER_ID, place.place_id)
+                    startActivity(intent)
+                }
+            } )
         }else{
             binding.rvMainItems.visibility = View.GONE
         }
-
     }
 
     private fun getMainItemsList(){
